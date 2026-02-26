@@ -5,10 +5,10 @@ import { myself } from '@/data/myself';
 import { Archive, BookOpen, BriefCase, Envelope, Explorer } from '@/icons';
 import Link from 'next/link';
 
-export const metadata = {
-  title: 'Girish Gaikwad | Developer',
-  description: 'Personal portfolio and system interface.',
-};
+// export const metadata = {
+//   title: 'Girish Gaikwad | Developer',
+//   description: 'Personal portfolio and system interface.',
+// };
 
 export const sections = [
   { index: 0, title: 'About Me', id: 'about-me' },
