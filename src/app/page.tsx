@@ -169,7 +169,7 @@ export default function Index() {
                     </div>
                     <div className="flex justify-between border-b border-zinc-800 pb-2">
                       <span className="text-zinc-600">EXPERIENCE</span>
-                      <span className="text-zinc-200">{myself.yearsOfExperience} STARTUP-COPORATE</span>
+                      <span className="text-zinc-200">{myself.yearsOfExperience} STARTUP-CORPORATE</span>
                     </div>
                     <div className="flex justify-between pb-1">
                       <span className="text-zinc-600">STATUS</span>
