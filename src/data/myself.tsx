@@ -41,7 +41,7 @@ export const myself = {
         {
             name: "SUNFLOWER X AM I DREAMING",
             artist: "Post Malone, Swae Lee",
-            src: "/media/SunflowerXAmIDreaming.mp3"
+            src: "/media/sunflowerxdreaming.mp3"
         },
         {
             name: "The Living TombStone",
