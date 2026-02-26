@@ -1,0 +1,116 @@
+import { AppSolution, Container, FadeIn, FadeInStagger, Section } from '@/components';
+import Image from 'next/image';
+import { evapro } from '../../../../public/projects';
+
+export const appData = {
+  industry: 'EdTech / AI Tooling',
+  title: 'Evapro',
+  description: 'AI-powered evaluation system designed to automatically assess and grade flowcharts, algorithms, and pseudocode for academic and coding competitions.',
+  image: evapro,
+  date: '2025-11',
+  service: 'AI Evaluation Engine',
+  url: 'https://evapro-jet.vercel.app/',
+  pathname: '/apps/evapro',
+  framework: 'react',
+};
+
+export const sections = [
+  { index: 0, title: 'About', id: 'about' },
+  { index: 1, title: 'Challenge', id: 'challenge' },
+  { index: 2, title: 'Solution', id: 'solution' },
+  { index: 3, title: 'Technologies', id: 'technologies' },
+];
+
+export const metadata = {
+  title: `${appData.title} | System Record`,
+  description: appData.description,
+};
+
+export const technologies = [
+  { name: 'React', image: '/logos/react-logo.png' },
+  { name: 'NodeJS', image: '/logos/nodejs-logo.png' },
+  { name: 'LLM APIs', image: '/logos/llm.png' },
+  { name: 'File Parsers', image: '/logos/opencv-logo.png' }, // Add generic file parser logo
+];
+
+<Container className="font-mono">
+<div className="border-t border-[rgb(var(--dark-border))] my-12 relative w-full">
+  <div className="absolute left-0 -top-1 w-2 h-2 bg-[rgb(var(--work-yellow))]"></div>
+</div>
+
+<Section id="challenge">
+  <div className="text-[10px] tracking-widest uppercase opacity-50 mb-2">// PROBLEM_STATEMENT</div>
+  <h2 className="text-2xl md:text-4xl font-black uppercase tracking-tight text-[rgb(var(--work-yellow))] mb-6">Challenge</h2>
+  <div className="text-sm md:text-base opacity-80 leading-relaxed mb-6 font-sans">
+    Grading logic algorithms and flowcharts is highly subjective and format-dependent. To automate this, the system needed to interpret both visual and textual logic structures fairly:
+  </div>
+  <div className="border-l border-[rgb(var(--dark-border))] pl-6 ml-2 space-y-3 text-sm opacity-80">
+    <p><span className="text-[rgb(var(--work-yellow))] font-bold mr-2">&gt;</span>Parsing multiple proprietary file formats (.docx, .pptx, .pdf).</p>
+    <p><span className="text-[rgb(var(--work-yellow))] font-bold mr-2">&gt;</span>Converting visual flowchart components into structured, evaluable logic strings.</p>
+    <p><span className="text-[rgb(var(--work-yellow))] font-bold mr-2">&gt;</span>Ensuring a fair, rubric-based grading system rather than arbitrary AI assessment.</p>
+  </div>
+</Section>
+
+<div className="border-t border-[rgb(var(--dark-border))] my-16 relative w-full">
+  <div className="absolute right-0 -top-1 w-2 h-2 bg-[rgb(var(--work-yellow))]"></div>
+</div>
+
+<Section id="solution">
+  <div className="text-[10px] tracking-widest uppercase opacity-50 mb-2">// SYSTEM_ARCHITECTURE</div>
+  <h2 className="text-2xl md:text-4xl font-black uppercase tracking-tight text-[rgb(var(--work-yellow))] mb-6">Solution</h2>
+  <AppSolution image='evapro.png' href={appData.url}>
+    <div className="font-sans opacity-80 leading-relaxed space-y-4 mb-8">
+      <p>I engineered a multi-stage parser that extracts raw text and structural data from uploaded documents, passing the sanitized output to a rubric-bound AI scoring engine.</p>
+    </div>
+    <ul role="list" className="mt-8 space-y-6 border-t border-[rgb(var(--dark-border))] pt-8">
+      <li className="flex gap-4 p-4 border border-[rgb(var(--dark-border))] bg-[rgb(var(--menu-bg))] hover:border-[rgb(var(--work-yellow))] transition-colors">
+        <span className="text-[rgb(var(--work-yellow))] font-bold mt-1">#</span>
+        <span className="font-sans text-sm opacity-80">
+          <strong className="font-mono text-[rgb(var(--work-yellow))] tracking-tight block mb-1 uppercase text-xs">Universal Document Parsing:</strong> 
+          Integrated robust server-side document parsers capable of stripping text and structural logic from Word docs, PDFs, and PowerPoints, standardizing the input.
+        </span>
+      </li>
+      <li className="flex gap-4 p-4 border border-[rgb(var(--dark-border))] bg-[rgb(var(--menu-bg))] hover:border-[rgb(var(--work-yellow))] transition-colors">
+        <span className="text-[rgb(var(--work-yellow))] font-bold mt-1">#</span>
+        <span className="font-sans text-sm opacity-80">
+          <strong className="font-mono text-[rgb(var(--work-yellow))] tracking-tight block mb-1 uppercase text-xs">Weighted Rubric Engine:</strong> 
+          Restricted the AI's grading parameters by injecting strict evaluation rubrics into the prompt. The AI acts as a scoring algorithm utilizing weighted metrics rather than a free-form text generator.
+        </span>
+      </li>
+    </ul>
+  </AppSolution>
+</Section>
+
+<div className="border-t border-[rgb(var(--dark-border))] my-16 relative w-full">
+  <div className="absolute left-1/2 -top-1 w-2 h-2 bg-[rgb(var(--work-yellow))] -translate-x-1/2"></div>
+</div>
+
+<Section id="technologies">
+  <div className="text-[10px] tracking-widest uppercase opacity-50 mb-2">// DEPLOYED_MODULES</div>
+  <h2 className="text-2xl md:text-4xl font-black uppercase tracking-tight text-[rgb(var(--work-yellow))] mb-8">Technologies</h2>
+  
+  <FadeInStagger 
+    className="bg-[rgb(var(--dark-border))] gap-px grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 border border-[rgb(var(--dark-border))] shadow-xl" 
+    faster={true} 
+    once={true}
+  >
+    {technologies.map((tech) => (
+      <FadeIn key={tech.name} className="relative group bg-[rgb(var(--dark-bg))] flex flex-col items-center justify-center p-6 hover:bg-[rgb(var(--hover-item-bg))] transition-colors duration-300 min-h-[140px]">
+        <div className="absolute top-0 left-0 w-2 h-2 border-t border-l border-[rgb(var(--work-yellow))] opacity-0 group-hover:opacity-100 transition-opacity"></div>
+        <div className="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-[rgb(var(--work-yellow))] opacity-0 group-hover:opacity-100 transition-opacity"></div>
+        <div className="relative w-12 h-12 mb-4">
+          <Image 
+            src={tech.image} 
+            className="object-contain grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500" 
+            alt={`${tech.name} module`} 
+            fill={true} 
+          />
+        </div>
+        <h4 className="text-[10px] font-bold tracking-widest uppercase text-center w-full truncate opacity-50 group-hover:opacity-100 group-hover:text-[rgb(var(--work-yellow))] transition-colors">
+          {tech.name}
+        </h4>
+      </FadeIn>
+    ))}
+  </FadeInStagger>
+</Section>
+</Container>

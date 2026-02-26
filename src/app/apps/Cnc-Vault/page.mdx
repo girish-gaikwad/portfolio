@@ -1,0 +1,118 @@
+import { AppSolution, Container, FadeIn, FadeInStagger, Section } from '@/components';
+import Image from 'next/image';
+import { cncvault } from '../../../../public/projects';
+
+export const appData = {
+  industry: 'Industrial Engineering',
+  title: 'Cnc-Vault',
+  description: 'Centralized management system designed to provide secure, enterprise-level access to CNC machine programs, PLC logic, and configuration data.',
+  image: cncvault,
+  date: '2025-07',
+  service: 'Enterprise Dashboard',
+  url: 'https://cnc-machines.vercel.app/',
+  pathname: '/apps/Cnc-Vault',
+  framework: 'next',
+};
+
+export const sections = [
+  { index: 0, title: 'About', id: 'about' },
+  { index: 1, title: 'Challenge', id: 'challenge' },
+  { index: 2, title: 'Solution', id: 'solution' },
+  { index: 3, title: 'Technologies', id: 'technologies' },
+];
+
+export const metadata = {
+  title: `${appData.title} | System Record`,
+  description: appData.description,
+};
+
+export const technologies = [
+  { name: 'NextJS', image: '/logos/nextjs-logo.png' },
+  { name: 'TailwindCSS', image: '/logos/tailwindcss-logo.jpg' },
+  { name: 'NodeJS', image: '/logos/nodejs-logo.png' },
+  { name: 'MongoDB', image: '/logos/mongodb-logo.webp' },
+  { name: 'Prisma', image: '/logos/prisma-logo.png' }, // Add prisma logo
+  { name: 'JWT Auth', image: '/logos/jwt-logo.png' }, // Add JWT logo
+];
+
+<Container className="font-mono">
+<div className="border-t border-[rgb(var(--dark-border))] my-12 relative w-full">
+  <div className="absolute left-0 -top-1 w-2 h-2 bg-[rgb(var(--work-yellow))]"></div>
+</div>
+
+<Section id="challenge">
+  <div className="text-[10px] tracking-widest uppercase opacity-50 mb-2">// PROBLEM_STATEMENT</div>
+  <h2 className="text-2xl md:text-4xl font-black uppercase tracking-tight text-[rgb(var(--work-yellow))] mb-6">Challenge</h2>
+  <div className="text-sm md:text-base opacity-80 leading-relaxed mb-6 font-sans">
+    Industrial CNC logic and PLC programs are highly sensitive trade secrets. The system required an enterprise-grade file management architecture capable of securing these assets while keeping them accessible to authorized engineers. Key obstacles included:
+  </div>
+  <div className="border-l border-[rgb(var(--dark-border))] pl-6 ml-2 space-y-3 text-sm opacity-80">
+    <p><span className="text-[rgb(var(--work-yellow))] font-bold mr-2">&gt;</span>Enforcing strict Role-Based Access Control (RBAC) across different engineering tiers.</p>
+    <p><span className="text-[rgb(var(--work-yellow))] font-bold mr-2">&gt;</span>Ensuring completely secure storage and retrieval of CNC programs.</p>
+    <p><span className="text-[rgb(var(--work-yellow))] font-bold mr-2">&gt;</span>Managing heavy folder-tree structures without lagging the client-side UI.</p>
+  </div>
+</Section>
+
+<div className="border-t border-[rgb(var(--dark-border))] my-16 relative w-full">
+  <div className="absolute right-0 -top-1 w-2 h-2 bg-[rgb(var(--work-yellow))]"></div>
+</div>
+
+<Section id="solution">
+  <div className="text-[10px] tracking-widest uppercase opacity-50 mb-2">// SYSTEM_ARCHITECTURE</div>
+  <h2 className="text-2xl md:text-4xl font-black uppercase tracking-tight text-[rgb(var(--work-yellow))] mb-6">Solution</h2>
+  <AppSolution image='cncvault.png' href={appData.url}>
+    <div className="font-sans opacity-80 leading-relaxed space-y-4 mb-8">
+      <p>Cnc-Vault acts as a fortified bridge between the engineers and the data servers. The backend utilizes Prisma ORM on top of MongoDB to manage complex file hierarchy relationships, while JWT-based middleware handles authorization.</p>
+    </div>
+    <ul role="list" className="mt-8 space-y-6 border-t border-[rgb(var(--dark-border))] pt-8">
+      <li className="flex gap-4 p-4 border border-[rgb(var(--dark-border))] bg-[rgb(var(--menu-bg))] hover:border-[rgb(var(--work-yellow))] transition-colors">
+        <span className="text-[rgb(var(--work-yellow))] font-bold mt-1">#</span>
+        <span className="font-sans text-sm opacity-80">
+          <strong className="font-mono text-[rgb(var(--work-yellow))] tracking-tight block mb-1 uppercase text-xs">RBAC & API Signatures:</strong> 
+          Implemented robust RBAC middleware. Protected endpoints explicitly require signed API requests validating the user's JWT hierarchy before returning any sensitive machine configuration data.
+        </span>
+      </li>
+      <li className="flex gap-4 p-4 border border-[rgb(var(--dark-border))] bg-[rgb(var(--menu-bg))] hover:border-[rgb(var(--work-yellow))] transition-colors">
+        <span className="text-[rgb(var(--work-yellow))] font-bold mt-1">#</span>
+        <span className="font-sans text-sm opacity-80">
+          <strong className="font-mono text-[rgb(var(--work-yellow))] tracking-tight block mb-1 uppercase text-xs">Lazy Loading Folder Tree:</strong> 
+          To prevent massive DB dumps on load, the folder architecture was designed using recursive lazy loading via endpoints like <code>/api/folders?parentId=...</code>, allowing for instant UI rendering regardless of vault size.
+        </span>
+      </li>
+    </ul>
+  </AppSolution>
+</Section>
+
+<div className="border-t border-[rgb(var(--dark-border))] my-16 relative w-full">
+  <div className="absolute left-1/2 -top-1 w-2 h-2 bg-[rgb(var(--work-yellow))] -translate-x-1/2"></div>
+</div>
+
+<Section id="technologies">
+  <div className="text-[10px] tracking-widest uppercase opacity-50 mb-2">// DEPLOYED_MODULES</div>
+  <h2 className="text-2xl md:text-4xl font-black uppercase tracking-tight text-[rgb(var(--work-yellow))] mb-8">Technologies</h2>
+  
+  <FadeInStagger 
+    className="bg-[rgb(var(--dark-border))] gap-px grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 border border-[rgb(var(--dark-border))] shadow-xl" 
+    faster={true} 
+    once={true}
+  >
+    {technologies.map((tech) => (
+      <FadeIn key={tech.name} className="relative group bg-[rgb(var(--dark-bg))] flex flex-col items-center justify-center p-6 hover:bg-[rgb(var(--hover-item-bg))] transition-colors duration-300 min-h-[140px]">
+        <div className="absolute top-0 left-0 w-2 h-2 border-t border-l border-[rgb(var(--work-yellow))] opacity-0 group-hover:opacity-100 transition-opacity"></div>
+        <div className="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-[rgb(var(--work-yellow))] opacity-0 group-hover:opacity-100 transition-opacity"></div>
+        <div className="relative w-12 h-12 mb-4">
+          <Image 
+            src={tech.image} 
+            className="object-contain grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500" 
+            alt={`${tech.name} module`} 
+            fill={true} 
+          />
+        </div>
+        <h4 className="text-[10px] font-bold tracking-widest uppercase text-center w-full truncate opacity-50 group-hover:opacity-100 group-hover:text-[rgb(var(--work-yellow))] transition-colors">
+          {tech.name}
+        </h4>
+      </FadeIn>
+    ))}
+  </FadeInStagger>
+</Section>
+</Container>
