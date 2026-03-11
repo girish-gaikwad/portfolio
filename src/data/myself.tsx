@@ -274,7 +274,7 @@ export const myself = {
     clg: {
         name: "Bannari Amman Institute of Technology",
         degree: "B.Tech. in Information Technology",
-        duration: "2014 - 2018",
+        duration: "2023 - 2027",
         currentYear: "3rd Year Student",
         img: "/bit.png"
     }

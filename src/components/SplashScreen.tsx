@@ -8,10 +8,10 @@ export default function SplashScreen() {
   const [show, setShow] = useState(true);
 
   useEffect(() => {
-    // Super fast boot sequence (1.5 seconds total)
+    // Fast, intentional loading duration
     const timer = setTimeout(() => {
       setShow(false);
-    }, 1000); 
+    }, 1200); 
     
     return () => {
       clearTimeout(timer);
@@ -23,73 +23,64 @@ export default function SplashScreen() {
       {show && (
         <motion.div
           initial={{ opacity: 1 }}
-          exit={{ opacity: 0, scale: 1.05 }}
-          transition={{ duration: 0.4, ease: "easeInOut" }}
-          className="fixed inset-0 z-[100] bg-[#020202] flex flex-col items-center justify-center select-none cursor-wait overflow-hidden"
-          onClick={() => setShow(false)}
+          exit={{ opacity: 0, y: -20 }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className="fixed inset-0 z-[100] bg-[#050505] flex flex-col items-center justify-center select-none cursor-wait"
         >
-          {/* CyberGrid Background - Faint */}
-          <div className="absolute inset-0 bg-[linear-gradient(rgba(0,240,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(0,240,255,0.03)_1px,transparent_1px)] bg-[size:30px_30px] pointer-events-none"></div>
-
-          {/* Glitchy Logo Viewport */}
-          <motion.div 
-            initial={{ opacity: 0, y: 10, filter: "blur(4px)" }}
-            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-            transition={{ duration: 0.3 }}
-            className="relative mb-6"
-          >
-            {/* Replace src with your actual logo path */}
-            <div className="relative w-24 h-24 sm:w-32 sm:h-32">
-              {/* Backglow */}
-              <div className="absolute inset-0 bg-[#00f0ff] blur-[20px] opacity-20 animate-pulse"></div>
-              
+          <div className="flex flex-col items-center justify-center relative z-10">
+            {/* Logo Presentation - Clean, no artificial glow */}
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.95, filter: "blur(4px)" }}
+              animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+              transition={{ duration: 0.5, ease: "easeOut" }}
+              className="relative w-20 h-20 sm:w-24 sm:h-24 mb-6"
+            >
               <Image 
-                src="/logos/gg.png"
-                alt="System Logo"
+                src="/logos/gg.png" 
+                alt="Girish Gaikwad Logo"
                 fill
-                className="object-contain drop-shadow-[0_0_8px_rgba(0,240,255,0.5)]"
+                className="object-contain"
                 priority
               />
-            </div>
-            
-            {/* Targeting Brackets */}
-            <div className="absolute -top-4 -left-4 w-3 h-3 border-t-2 border-l-2 border-[#00f0ff] opacity-50"></div>
-            <div className="absolute -top-4 -right-4 w-3 h-3 border-t-2 border-r-2 border-[#00f0ff] opacity-50"></div>
-            <div className="absolute -bottom-4 -left-4 w-3 h-3 border-b-2 border-l-2 border-[#00f0ff] opacity-50"></div>
-            <div className="absolute -bottom-4 -right-4 w-3 h-3 border-b-2 border-r-2 border-[#00f0ff] opacity-50"></div>
-          </motion.div>
+            </motion.div>
 
-          {/* Hyper-fast Loading Bar */}
-          <div className="w-48 sm:w-64 h-[2px] bg-[#222] overflow-hidden mb-6 relative shadow-[0_0_10px_rgba(0,0,0,0.5)]">
+            {/* Brand Name - High-end typography focus */}
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.15, ease: "easeOut" }}
+              className="text-center overflow-hidden"
+            >
+              <h1 className="text-2xl sm:text-3xl font-bold text-white tracking-[0.2em] uppercase mb-2">
+                Girish Gaikwad
+              </h1>
+              <p className="text-[10px] sm:text-xs text-[#858585] tracking-widest uppercase font-mono">
+                SDE & Creative Technologist
+              </p>
+            </motion.div>
+          </div>
+
+          {/* Razor-thin Minimalist Progress Line */}
+          <div className="absolute bottom-0 left-0 w-full h-[1px] bg-[#1a1a1a]">
             <motion.div 
-              className="absolute left-0 top-0 h-full bg-[#00f0ff] shadow-[0_0_10px_#00f0ff]"
+              className="h-full bg-white"
               initial={{ width: "0%" }}
               animate={{ width: "100%" }}
-              transition={{ duration: 1.2, ease: "circIn" }}
+              transition={{ duration: 1.2, ease: [0.76, 0, 0.24, 1] }} // Elegant Apple-style easing
             />
           </div>
 
-          {/* Boot Sequence Text */}
-          <div className="font-mono text-[9px] sm:text-[10px] tracking-[0.2em] text-[#00f0ff] uppercase flex flex-col items-center gap-1 opacity-80">
-            <motion.span 
-              initial={{ opacity: 0 }} 
-              animate={{ opacity: [0, 1, 0] }} 
-              transition={{ duration: 0.3, times: [0, 0.5, 1], repeat: Infinity }}
-            >
-              ESTABLISHING_UPLINK...
-            </motion.span>
-            <span>SYS.AUTH_GRANTED</span>
-          </div>
+          {/* Elegant Mobile Warning - Unobtrusive */}
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.5 }}
+            className="absolute bottom-8 flex sm:hidden items-center gap-2 text-[#666] text-[10px] tracking-widest uppercase font-sans"
+          >
+             <Laptop size={12} className="opacity-70" />
+             <span>Desktop Experience Recommended</span>
+          </motion.div>
 
-          {/* Mobile Context Warning (Only visible on small screens) */}
-          <div className="absolute bottom-8 flex sm:hidden items-center gap-2 px-3 py-1.5 border border-[#333] bg-[#111] text-[#fcee0a] text-[9px] font-mono tracking-widest uppercase">
-             <Laptop size={12} />
-             <span>Desktop Recommended</span>
-          </div>
-
-          {/* Scanline Effect */}
-          <div className="absolute inset-0 bg-[url('/scanlines.png')] opacity-[0.15] pointer-events-none mix-blend-overlay"></div>
-          
         </motion.div>
       )}
     </AnimatePresence>
