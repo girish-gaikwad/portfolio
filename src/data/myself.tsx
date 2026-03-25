@@ -27,10 +27,10 @@ export const myself = {
         {
             name: "Email", url: "mailto:girishgaikwad@gmail.com", icon: <Mail height="16" width="16" className="group-hover:text-blue-400 fill-current transition-colors" />
         },
-        { name: "LinkedIn", url: "https://linkedin.com/in/girish-gaikwad", icon: <Linkedin height="16" width="16" className="group-hover:text-blue-400 fill-current first-letter:transition-colors" /> },
-        { name: "GitHub", url: "https://github.com/girishgaikwad", icon: <Github height="16" width="16" className="group-hover:text-blue-400 fill-current transition-colors" /> },
+        { name: "LinkedIn", url: "https://www.linkedin.com/in/girish-gaikwad2055/", icon: <Linkedin height="16" width="16" className="group-hover:text-blue-400 fill-current first-letter:transition-colors" /> },
+        { name: "GitHub", url: "https://github.com/girish-gaikwad", icon: <Github height="16" width="16" className="group-hover:text-blue-400 fill-current transition-colors" /> },
         { name: "Resume", url: "/Girish_Gaikwad_Resume.pdf", icon: <FileTextIcon height="16" width="16" className="group-hover:text-blue-400 transition-colors" /> },
-        { name: "Twitter", url: "https://twitter.com/girishgaikwad", icon: <TwitterIcon height="16" width="16" className="group-hover:text-blue-400 fill-current transition-colors" /> },
+        { name: "Twitter", url: "https://x.com/Girish_gaikwad_", icon: <TwitterIcon height="16" width="16" className="group-hover:text-blue-400 fill-current transition-colors" /> },
     ],
     playlist: [
         {
